@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_005jv1i" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.6.0">
+  <bpmn:process id="my-first-process" name="My First Process" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>Flow_19yz9z3</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="demoapp-personalinfo" name="Enter Personal Info">
+      <bpmn:incoming>Flow_19yz9z3</bpmn:incoming>
+      <bpmn:outgoing>Flow_09dkb06</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_19yz9z3" sourceRef="StartEvent_1" targetRef="demoapp-personalinfo" />
+    <bpmn:sequenceFlow id="Flow_09dkb06" sourceRef="demoapp-personalinfo" targetRef="demoapp-address" />
+    <bpmn:endEvent id="Event_110a66q">
+      <bpmn:incoming>Flow_17sa03r</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_17sa03r" sourceRef="demoapp-address" targetRef="Event_110a66q" />
+    <bpmn:serviceTask id="demoapp-address" name="Enter Address Info" camunda:type="external" camunda:topic="address-info">
+      <bpmn:incoming>Flow_09dkb06</bpmn:incoming>
+      <bpmn:outgoing>Flow_17sa03r</bpmn:outgoing>
+    </bpmn:serviceTask>
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="my-first-process">
+      <bpmndi:BPMNEdge id="Flow_17sa03r_di" bpmnElement="Flow_17sa03r">
+        <di:waypoint x="810" y="117" />
+        <di:waypoint x="912" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09dkb06_di" bpmnElement="Flow_09dkb06">
+        <di:waypoint x="410" y="117" />
+        <di:waypoint x="710" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_19yz9z3_di" bpmnElement="Flow_19yz9z3">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="310" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_08dagi5_di" bpmnElement="demoapp-personalinfo">
+        <dc:Bounds x="310" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_110a66q_di" bpmnElement="Event_110a66q">
+        <dc:Bounds x="912" y="99" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1s6uz1b_di" bpmnElement="demoapp-address">
+        <dc:Bounds x="710" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
